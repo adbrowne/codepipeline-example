@@ -1,0 +1,45 @@
+{
+    "name": "CLI-Build",
+    "description": "",
+    "source": {
+        "type": "GITHUB",
+        "location": "https://github.com/adbrowne/codepipeline-example.git",
+        "buildspec": "",
+        "auth": {
+            "type": "OAUTH",
+            "resource": ""
+        }
+    },
+    "artifacts": {
+        "type": "NO_ARTIFACTS"    },
+    "cache": {
+        "type": "NO_CACHE"
+    },
+    "environment": {
+        "type": "LINUX_CONTAINER",
+        "image": "aws/codebuild/golang:1.7.3",
+        "computeType": "BUILD_GENERAL1_SMALL",
+        "environmentVariables": [
+            {
+                "name": "AWS_DEFAULT_REGION",
+                "value": "us-west-2"
+              },
+              {
+                "name": "AWS_ACCOUNT_ID",
+                "value": "662430452979"
+              },
+              {
+                "name": "IMAGE_REPO_NAME",
+                "value": "codebuild-repo"
+              },
+              {
+                "name": "IMAGE_TAG",
+                "value": "latest"
+              }
+        ],
+        "privilegedMode": false
+    },
+    "serviceRole": "CodeBuild-ServiceRole",
+    "timeoutInMinutes": 60,
+    "badgeEnabled": false
+}
