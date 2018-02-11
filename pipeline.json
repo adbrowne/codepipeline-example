@@ -1,0 +1,69 @@
+{
+    "pipeline": {
+        "stages": [
+            {
+                "actions": [
+                    {
+                        "outputArtifacts": [
+                            {
+                                "name": "MyApp"
+                            }
+                        ],
+                        "inputArtifacts": [],
+                        "name": "Source",
+                        "actionTypeId": {
+                            "provider": "GitHub",
+                            "owner": "ThirdParty",
+                            "category": "Source",
+                            "version": "1"
+                        },
+                        "runOrder": 1,
+                        "configuration": {
+                            "OAuthToken": "****",
+                            "Owner": "adbrowne",
+                            "Branch": "master",
+                            "PollForSourceChanges": "true",
+                            "Repo": "codepipeline-example"
+                        }
+                    }
+                ],
+                "name": "Source"
+            },
+            {
+                "actions": [
+                    {
+                        "outputArtifacts": [
+                            {
+                                "name": "MyAppBuild"
+                            }
+                        ],
+                        "inputArtifacts": [
+                            {
+                                "name": "MyApp"
+                            }
+                        ],
+                        "name": "CodeBuild",
+                        "actionTypeId": {
+                            "provider": "CodeBuild",
+                            "owner": "AWS",
+                            "category": "Build",
+                            "version": "1"
+                        },
+                        "runOrder": 1,
+                        "configuration": {
+                            "ProjectName": "CodeBuildTest"
+                        }
+                    }
+                ],
+                "name": "Build"
+            }
+        ],
+        "roleArn": "arn:aws:iam::662430452979:role/AWS-CodePipeline-Service",
+        "artifactStore": {
+            "type": "S3",
+            "location": "codepipeline-us-west-2-67211504096"
+        },
+        "version": 1,
+        "name": "test-pipeline"
+    }
+}
