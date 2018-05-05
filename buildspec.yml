@@ -9,5 +9,5 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...          
-      - docker build -t codepipelineexample:$CODEBUILD_SOURCE_VERSION .
-      - docker tag codepipelineexample:$CODEBUILD_SOURCE_VERSION $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/codepipelineexample:$CODEBUILD_SOURCE_VERSION
+      - docker build -t codepipelineexample:latest .
+      - docker tag codepipelineexample:latest $AWS_ACCOUNT_ID.dkr.ecr.$AWS_DEFAULT_REGION.amazonaws.com/codepipelineexample:latest
