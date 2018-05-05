@@ -37,7 +37,7 @@
                 "value": "latest"
               }
         ],
-        "privilegedMode": false
+        "privilegedMode": true
     },
     "serviceRole": "CodeBuild-ServiceRole",
     "timeoutInMinutes": 60,

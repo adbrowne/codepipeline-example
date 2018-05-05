@@ -1,5 +1,11 @@
-FROM scratch
-ADD ca-certificates.crt /etc/ssl/certs/
-ADD app /
+# build stage
+FROM golang:alpine AS build-env
+ADD . /src
+RUN cd /src && go build -o goapp
+
+# final stage
+FROM alpine
+WORKDIR /app
+COPY --from=build-env /src/goapp /app/
 EXPOSE 8080
-CMD ["/app"]
+ENTRYPOINT ./goapp
