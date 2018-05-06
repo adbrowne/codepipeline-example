@@ -1,0 +1,9 @@
+Version: 1
+Build: 
+  Account: 123443241
+  Container: aws/codebuild/docker:17.09.0
+  Command: ./build.sh # run on PR branches
+Deploy: 
+  Account: 123443241
+  Container: aws/codebuild/docker:17.09.0
+  Command: ./build-deploy.sh # run on merge to master
